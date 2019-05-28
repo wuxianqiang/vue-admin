@@ -60,6 +60,7 @@ export default {
   top: 48px;
   left: 50%;
   min-width: 300px;
+  margin-left: -150px;
   height: 48px;
   display: flex;
   align-items: center;
