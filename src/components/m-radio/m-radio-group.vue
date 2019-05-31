@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     check (_uid) {
-      console.log(this)
       this.$children.forEach(item => {
         if (item._uid === _uid) {
           item.picked = item.label

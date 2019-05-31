@@ -1,7 +1,7 @@
 <template>
   <div
+    class="radio-button"
     :class="{active: picked === label}"
-    class="radio-button radio-inner"
   >
     <input
       :id="_uid"
@@ -23,7 +23,7 @@
 export default {
   props: {
     label: {
-      type: [String, Number, Boolean],
+      type: [String, Number],
       defalut: ''
     }
   },
@@ -36,7 +36,6 @@ export default {
   watch: {
     picked (value) {
       if (value !== '') {
-        console.log(this.$parent)
         this.$parent.check(this._uid)
       }
     }
@@ -45,15 +44,6 @@ export default {
 </script>
 
 <style scoped>
-.radio-inner {
-  min-width: 69px;
-  min-height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  transition: all 0.3s;
-}
 .radio-input {
   appearance: none;
   outline: none;
@@ -66,10 +56,18 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 .radio-button {
   border: 1px solid #dcdfe6;
   border-left: none;
+  min-width: 69px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  transition: all 0.3s;
 }
 .radio-button:last-child {
   border: 1px solid #dcdfe6;
