@@ -6,7 +6,7 @@ install:
 script:
   - npm run build
 after_script:
-  - cd ./build
+  - cd ./dist
   - git init
   - git config user.name "wuxianqiang"
   - git config user.email "2631640352@qq.com"
