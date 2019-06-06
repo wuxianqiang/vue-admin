@@ -13,11 +13,23 @@ export default {
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      this.$children.forEach(item => {
-        item.picked = this.value.includes(item.label)
-      })
-    })
+    // this.$nextTick(() => {
+    //   this.$children.forEach(item => {
+    //     item.picked = this.value.includes(item.label)
+    //   })
+    // })
+  },
+  watch: {
+    value: {
+      immediate: true,
+      handler (label) {
+        this.$nextTick(() => {
+          this.$children.forEach(item => {
+            item.picked = label.includes(item.label)
+          })
+        })
+      }
+    }
   },
   methods: {
     check (_uid) {

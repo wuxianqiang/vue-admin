@@ -61,13 +61,13 @@ export default {
   },
 
   mounted () {
-    this.$nextTick(() => {
-      this.$children.forEach(item => {
-        if (item.value === this.value) {
-          this.label = item.label
-        }
-      })
-    })
+    // this.$nextTick(() => {
+    //   this.$children.forEach(item => {
+    //     if (item.value === this.value) {
+    //       this.label = item.label
+    //     }
+    //   })
+    // })
   },
 
   watch: {
@@ -84,6 +84,18 @@ export default {
             }
           })
         }, 20);
+      }
+    },
+    value: {
+      immediate: true,
+      handler (label) {
+        this.$nextTick(() => {
+          this.$children.forEach(item => {
+            if (item.value === label) {
+              this.label = item.label
+            }
+          })
+        })
       }
     }
   },

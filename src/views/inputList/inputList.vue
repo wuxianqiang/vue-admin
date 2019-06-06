@@ -39,6 +39,7 @@
     </div>
     <div class="title">复选框</div>
     <div>
+      <button @click="handleAll">全选</button>
       <m-checkbox-group v-model="list">
         <m-checkbox :label="0">篮球</m-checkbox>
         <m-checkbox :label="2">足球</m-checkbox>
@@ -103,6 +104,11 @@ export default {
   },
   created () {
     this.type = ['', 'primary', 'success', 'info', 'warning', 'danger']
+  },
+  methods: {
+    handleAll () {
+      this.list = [0,1,2]
+    }
   }
 }
 </script>

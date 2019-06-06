@@ -13,15 +13,31 @@ export default {
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      this.$children.forEach(item => {
-        if (item.label === this.value) {
-          item.picked = item.label
-        } else {
-          item.picked = ''
-        }
-      })
-    })
+    // this.$nextTick(() => {
+    //   this.$children.forEach(item => {
+    //     if (item.label === this.value) {
+    //       item.picked = item.label
+    //     } else {
+    //       item.picked = ''
+    //     }
+    //   })
+    // })
+  },
+  watch: {
+    value: {
+      immediate: true,
+      handler (label) {
+        this.$nextTick(() => {
+          this.$children.forEach(item => {
+            if (item.label === label) {
+              item.picked = item.label
+            } else {
+              item.picked = ''
+            }
+          })
+        })
+      }
+    }
   },
   methods: {
     check (_uid) {
