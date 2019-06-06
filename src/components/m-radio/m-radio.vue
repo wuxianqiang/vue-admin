@@ -3,14 +3,16 @@
     <input
       :id="_uid"
       :value="label"
+      :class="{'radio-active': picked === label}"
       v-model="picked"
       type="radio"
       class="radio-input"
-      :class="{active: picked === label}">
+    >
     <label
       :for="_uid"
+      :class="{'radio-text': picked === label}"
       class="radio-label"
-      :class="{text: picked === label}">
+    >
       <slot>
         {{ label }}
       </slot>
@@ -22,36 +24,19 @@
 export default {
   props: {
     label: {
-      type: [String, Number, Boolean],
+      type: [String, Number],
       default: ''
-    },
-    value: {
-      type: [String, Number, Boolean],
-      default: false
     }
   },
   data () {
     return {
-      picked: '',
-      isRadio: true
-    }
-  },
-  mounted () {
-    if (this.value === this.label) {
-      this.picked = this.value
+      picked: ''
     }
   },
   watch: {
     picked (value) {
       if (value !== '') {
-        this.$emit('input', this.label)
-        this.isRadio = false
-        this.$parent.$children.forEach(item => {
-          if (item.isRadio) {
-            item.picked = ''
-          }
-        })
-        this.isRadio = true
+        this.$parent.check(this._uid)
       }
     }
   }
@@ -78,13 +63,9 @@ export default {
   border-radius: 50%;
   cursor: pointer;
   vertical-align: middle;
-}
-.active {
-  border-color: #409eff;
-  background: #409eff;
   position: relative;
 }
-.active::after {
+.radio-input::after {
   border-radius: 50%;
   content: '';
   width: 4px;
@@ -93,14 +74,24 @@ export default {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate3d(-50%,-50%,0)
+  transform: translate3d(-50%,-50%,0);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.radio-active {
+  border-color: #409eff;
+  background: #409eff;
+}
+.radio-active::after {
+  opacity: 1;
 }
 .radio-label {
   padding-left: 8px;
   cursor: pointer;
   vertical-align: middle;
+  user-select: none;
 }
-.text {
+.radio-text {
   color: #409eff;
 }
 </style>

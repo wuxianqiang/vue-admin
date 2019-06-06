@@ -36,11 +36,11 @@ export default {
   },
 
   created () {
-    if (this.value === this.activeValue) {
-      this.select = true
-    } else {
-      this.select = false
-    }
+    // if (this.value === this.activeValue) {
+    //   this.select = true
+    // } else {
+    //   this.select = false
+    // }
   },
 
   methods: {
@@ -52,6 +52,16 @@ export default {
         this.$emit('input', this.activeValue)
       } else {
         this.$emit('input', this.inactiveVlaue)
+      }
+    },
+    value: {
+      immediate: true,
+      handler (newValue) {
+        if (newValue === this.activeValue) {
+          this.select = true
+        } else {
+          this.select = false
+        }
       }
     }
   }

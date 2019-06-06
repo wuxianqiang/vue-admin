@@ -13,8 +13,10 @@
     </div>
     <div class="title">单选框</div>
     <div>
-      <m-radio v-model="sex" :label="0">男生</m-radio>
-      <m-radio v-model="sex" :label="1">女生</m-radio>
+      <m-radio-group v-model="sex">
+        <m-radio v-model="sex" :label="0">男生</m-radio>
+        <m-radio v-model="sex" :label="1">女生</m-radio>
+      </m-radio-group>
     </div>
     <div class="title">按钮组</div>
     <div>
@@ -35,6 +37,18 @@
         </m-option>
       </m-select>
     </div>
+    <div class="title">复选框</div>
+    <div>
+      <button @click="handleAll">全选</button>
+      <m-checkbox-group v-model="list">
+        <m-checkbox :label="0">篮球</m-checkbox>
+        <m-checkbox :label="2">足球</m-checkbox>
+        <m-checkbox :label="1">羽毛球</m-checkbox>
+      </m-checkbox-group>
+    </div>
+    <div>
+      <m-date-picker v-model="time"></m-date-picker>
+    </div>
   </div>
 </template>
 
@@ -45,6 +59,9 @@ import MRadioButton from '@/components/m-radio/m-radio-button'
 import MRadio from '@/components/m-radio/m-radio'
 import MSelect from '@/components/m-select/m-select'
 import MOption from '@/components/m-select/m-option'
+import MCheckboxGroup from '@/components/m-checkbox/m-checkbox-group'
+import MCheckbox from '@/components/m-checkbox/m-checkbox'
+import MDatePicker from '@/components/m-date-picker/m-date-picker'
 export default {
   components: {
     MButton,
@@ -52,13 +69,21 @@ export default {
     MRadioGroup,
     MRadio,
     MSelect,
-    MOption
+    MOption,
+    MCheckboxGroup,
+    MCheckbox,
+    MDatePicker
   },
   data () {
     return {
       sex: 0,
       city: 0,
       select: '',
+      value: '',
+      radio: '1',
+      msg: '1',
+      list: [0],
+      time: new Date(),
       options: [{
         value: '选项1',
         label: '黄金糕'
@@ -79,6 +104,11 @@ export default {
   },
   created () {
     this.type = ['', 'primary', 'success', 'info', 'warning', 'danger']
+  },
+  methods: {
+    handleAll () {
+      this.list = [0,1,2]
+    }
   }
 }
 </script>
