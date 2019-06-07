@@ -15,14 +15,16 @@ export default {
   data () {
     return {
       text: '点击复制',
-      link: 'https://github.com/wuxianqiang/vue-jwt.git'
+      link: 'https://github.com/wuxianqiang/vue-admin.git'
     }
   },
   methods: {
     handleClick () {
       this.$refs.input.select()
       document.execCommand('copy')
-      this.$prompt.success('复制成功 ！')
+      this.$message.success({
+        message: '复制成功！'
+      })
     },
     handleLeave () {
     }

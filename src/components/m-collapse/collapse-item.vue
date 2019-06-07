@@ -2,7 +2,7 @@
   <div>
     <div @click="handleClick" >
       <slot name="title">
-        {{title}}
+        标题
       </slot>
     </div>
     <transition
@@ -12,7 +12,7 @@
       @leave="leave"
       @after-leave="afterLeave"
     >
-      <div  v-if="isShow" class="content">
+      <div  v-show="isShow" class="content">
         <slot></slot>
       </div>
     </transition>
@@ -21,19 +21,10 @@
 
 <script>
 export default {
-  props: {
-    title: {
-      type: String,
-      default: ''
-    }
-  },
   data () {
     return {
       isShow: false
     }
-  },
-  created () {
-    this.elTransition = '0.3s height ease-in-out'
   },
   methods: {
     handleClick () {
@@ -46,11 +37,19 @@ export default {
     enter (el, done) {
       // 动画过程
       let height = el.scrollHeight
-      el.style.transition = this.elTransition
-      el.style.height = `${height}px`
-      el.addEventListener('transitionend', () => {
-        done()
-      })
+      let step = height / 300 * 20
+      let distance = 0
+      let change = () => {
+        distance += step
+        if (distance < height) {
+          el.style.height = `${distance}px`
+          requestAnimationFrame(change)
+        } else {
+          el.style.height = `${height}px`
+          done()
+        }
+      }
+      requestAnimationFrame(change)
     },
     afterEnter (el) {
       // 动画之后
@@ -58,10 +57,19 @@ export default {
     },
     leave (el, done) {
       // 动画过程
-      el.style.height = 0
-      el.addEventListener('transitionend', () => {
-        done()
-      })
+      let height = el.scrollHeight
+      let step = height / 300 * 20
+      let change = () => {
+        height -= step
+        if (height > 0) {
+          el.style.height = `${height}px`
+          requestAnimationFrame(change)
+        } else {
+          el.style.height = 0
+          done()
+        }
+      }
+      requestAnimationFrame(change)
     },
     afterLeave (el) {
       console.log('关闭动画完成')
@@ -75,3 +83,4 @@ export default {
   overflow: hidden;
 }
 </style>
+

@@ -37,17 +37,6 @@ export default {
     }
   },
 
-  created () {
-    // this.msg = this.value
-    // let { prefix, suffix } = this.$slots
-    // if (prefix) {
-    //   this.isPrefix = true
-    // }
-    // if (suffix) {
-    //   this.isSuffix = true
-    // }
-  },
-
   watch: {
     value: {
       immediate: true,

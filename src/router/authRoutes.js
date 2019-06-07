@@ -4,6 +4,8 @@ import About from '@/views/about/about.vue'
 import Layout from '@/components/layout/layout.vue'
 import UserList from '@/views/userList/userList.vue'
 import InputList from '@/views/inputList/inputList.vue'
+import ShowList from '@/views/showList/showList.vue'
+import MessageList from '@/views/messageList/messageList.vue'
 
 export const authRoutes = [
   {
@@ -35,6 +37,22 @@ export const authRoutes = [
             component: InputList,
             meta: {
               bread: '表单组件'
+            }
+          },
+          {
+            path: 'showList',
+            name: 'ShowList',
+            component: ShowList,
+            meta: {
+              bread: '折叠面'
+            }
+          },
+          {
+            path: 'messageList',
+            name: 'MessageList',
+            component: MessageList,
+            meta: {
+              bread: '消息弹窗'
             }
           }
         ],

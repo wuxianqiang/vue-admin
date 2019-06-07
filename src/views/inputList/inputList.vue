@@ -28,7 +28,7 @@
     </div>
     <div class="title">选择框</div>
     <div>
-      <m-select v-model="value">
+      <m-select v-model="value" placeholder="请选择">
         <m-option
           v-for="(item, index) in options"
           :key="index"
@@ -39,7 +39,6 @@
     </div>
     <div class="title">复选框</div>
     <div>
-      <button @click="handleAll">全选</button>
       <m-checkbox-group v-model="list">
         <m-checkbox :label="0">篮球</m-checkbox>
         <m-checkbox :label="2">足球</m-checkbox>
@@ -47,7 +46,12 @@
       </m-checkbox-group>
     </div>
     <div>
+      <div class="title">日期框</div>
       <m-date-picker v-model="time"></m-date-picker>
+    </div>
+    <div>
+      <div class="title">开关</div>
+      <m-switch v-model="open"></m-switch>
     </div>
   </div>
 </template>
@@ -62,6 +66,7 @@ import MOption from '@/components/m-select/m-option'
 import MCheckboxGroup from '@/components/m-checkbox/m-checkbox-group'
 import MCheckbox from '@/components/m-checkbox/m-checkbox'
 import MDatePicker from '@/components/m-date-picker/m-date-picker'
+import MSwitch from '@/components/m-switch/m-switch'
 export default {
   components: {
     MButton,
@@ -72,7 +77,8 @@ export default {
     MOption,
     MCheckboxGroup,
     MCheckbox,
-    MDatePicker
+    MDatePicker,
+    MSwitch
   },
   data () {
     return {
@@ -84,6 +90,7 @@ export default {
       msg: '1',
       list: [0],
       time: new Date(),
+      open: false,
       options: [{
         value: '选项1',
         label: '黄金糕'

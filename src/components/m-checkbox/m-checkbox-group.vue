@@ -9,15 +9,8 @@ export default {
   props: {
     value: {
       type: Array,
-      default: []
+      default: (() => ([]))
     }
-  },
-  mounted () {
-    // this.$nextTick(() => {
-    //   this.$children.forEach(item => {
-    //     item.picked = this.value.includes(item.label)
-    //   })
-    // })
   },
   watch: {
     value: {
@@ -32,7 +25,7 @@ export default {
     }
   },
   methods: {
-    check (_uid) {
+    check () {
       let list = []
       this.$children.forEach(item => {
         if (item.picked) {

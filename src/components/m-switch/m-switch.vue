@@ -35,17 +35,6 @@ export default {
     }
   },
 
-  created () {
-    // if (this.value === this.activeValue) {
-    //   this.select = true
-    // } else {
-    //   this.select = false
-    // }
-  },
-
-  methods: {
-  },
-
   watch: {
     select (value) {
       if (value) {

@@ -12,17 +12,6 @@ export default {
       default: false
     }
   },
-  mounted () {
-    // this.$nextTick(() => {
-    //   this.$children.forEach(item => {
-    //     if (item.label === this.value) {
-    //       item.picked = item.label
-    //     } else {
-    //       item.picked = ''
-    //     }
-    //   })
-    // })
-  },
   watch: {
     value: {
       immediate: true,

@@ -5,7 +5,9 @@
       readonly
       class="input"
       ref="hook"
+      :placeholder="placeholder"
     >
+    <i class="el-icon-arrow-down select-icon" ref="icon"></i>
     <transition :name="animate">
       <div v-show="isVisiable" :class="top?'select-top':'select-bottom'">
         <div :class="top?'select-up':'select-down'"></div>
@@ -48,6 +50,10 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    placeholder: {
+      type: String,
+      default: ''
     }
   },
 
@@ -58,16 +64,6 @@ export default {
       top: false,
       animate: 'el-zoom-in-top'
     }
-  },
-
-  mounted () {
-    // this.$nextTick(() => {
-    //   this.$children.forEach(item => {
-    //     if (item.value === this.value) {
-    //       this.label = item.label
-    //     }
-    //   })
-    // })
   },
 
   watch: {
@@ -112,6 +108,7 @@ export default {
     },
 
     focus () {
+      this.$refs.icon.style.transform = 'rotateZ(-180deg)'
       // 自动处理选择框的方向
       let height = window.innerHeight - this.$refs.hook.getBoundingClientRect().bottom
       let offsetHeight = this.$children.length * 34 + 30
@@ -126,6 +123,7 @@ export default {
     },
 
     blur () {
+      this.$refs.icon.style.transform = 'rotateZ(0deg)'
       this.isVisiable = false
     },
 
@@ -154,7 +152,7 @@ export default {
   border-radius: 4px;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
   background: #fff;
-  max-height: 260px;
+  /* max-height: 260px; */
   min-width: 100%;
 }
 .select-top {
@@ -167,7 +165,7 @@ export default {
   border-radius: 4px;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
   background: #fff;
-  max-height: 260px;
+  /* max-height: 260px; */
   min-width: 100%;
 }
 .select-wrapper {
@@ -208,6 +206,14 @@ export default {
   top: -4px;
   background: #fff;
   border: 1px solid #e4e7ed;
+}
+
+.select-icon {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  transition: transform 0.3s;
+  transform: rotateZ(0);
 }
 
 
