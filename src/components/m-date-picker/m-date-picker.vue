@@ -301,7 +301,7 @@ export default {
     chooseDate (date) {
       this.time = getYearMonthDay(date)
       this.$emit('input', date)
-      this.isVisiable = false
+      this.blur()
     },
     prevMonth () {
       let d = getDate(this.time.year, this.time.month, 1)

@@ -17,7 +17,7 @@ export default {
       default: 'lable'
     },
     value: {
-      type: String,
+      type: [String, Number],
       default: 'value'
     }
   },

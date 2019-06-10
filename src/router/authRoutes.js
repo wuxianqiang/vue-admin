@@ -6,6 +6,7 @@ import UserList from '@/views/userList/userList.vue'
 import InputList from '@/views/inputList/inputList.vue'
 import ShowList from '@/views/showList/showList.vue'
 import MessageList from '@/views/messageList/messageList.vue'
+import ButtonList from '@/views/buttonList/buttonList.vue'
 
 export const authRoutes = [
   {
@@ -37,6 +38,14 @@ export const authRoutes = [
             component: InputList,
             meta: {
               bread: '表单组件'
+            }
+          },
+          {
+            path: 'buttonList',
+            name: 'ButtonList',
+            component: ButtonList,
+            meta: {
+              bread: '按钮组件'
             }
           },
           {

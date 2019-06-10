@@ -1,31 +1,5 @@
 <template>
   <div>
-    <div class="title">按钮</div>
-    <div>
-      <ul>
-        <li
-          v-for="(item, index) in type"
-          :key="index"
-          class="button">
-          <m-button :type="item">按钮</m-button>
-        </li>
-      </ul>
-    </div>
-    <div class="title">单选框</div>
-    <div>
-      <m-radio-group v-model="sex">
-        <m-radio v-model="sex" :label="0">男生</m-radio>
-        <m-radio v-model="sex" :label="1">女生</m-radio>
-      </m-radio-group>
-    </div>
-    <div class="title">按钮组</div>
-    <div>
-      <m-radio-group v-model="city">
-        <m-radio-button :label="0">北京</m-radio-button>
-        <m-radio-button :label="1">上海</m-radio-button>
-        <m-radio-button :label="2">广州</m-radio-button>
-      </m-radio-group>
-    </div>
     <div class="title">选择框</div>
     <div>
       <m-select v-model="value" placeholder="请选择">
@@ -37,48 +11,34 @@
         </m-option>
       </m-select>
     </div>
-    <div class="title">复选框</div>
-    <div>
-      <m-checkbox-group v-model="list">
-        <m-checkbox :label="0">篮球</m-checkbox>
-        <m-checkbox :label="2">足球</m-checkbox>
-        <m-checkbox :label="1">羽毛球</m-checkbox>
-      </m-checkbox-group>
-    </div>
     <div>
       <div class="title">日期框</div>
       <m-date-picker v-model="time"></m-date-picker>
     </div>
     <div>
-      <div class="title">开关</div>
-      <m-switch v-model="open"></m-switch>
+      <div class="title">文本框</div>
+      <m-textarea v-model="text" placeholder="请输入"></m-textarea>
+    </div>
+    <div>
+      <div class="title">时间选择</div>
+      <m-time-picker></m-time-picker>
     </div>
   </div>
 </template>
 
 <script>
-import MButton from '@/components/m-button/m-button'
-import MRadioGroup from '@/components/m-radio/m-radio-group'
-import MRadioButton from '@/components/m-radio/m-radio-button'
-import MRadio from '@/components/m-radio/m-radio'
 import MSelect from '@/components/m-select/m-select'
 import MOption from '@/components/m-select/m-option'
-import MCheckboxGroup from '@/components/m-checkbox/m-checkbox-group'
-import MCheckbox from '@/components/m-checkbox/m-checkbox'
 import MDatePicker from '@/components/m-date-picker/m-date-picker'
-import MSwitch from '@/components/m-switch/m-switch'
+import MTextarea from '@/components/m-textarea/m-textarea'
+import MTimePicker from '@/components/m-time-picker/m-time-picker'
 export default {
   components: {
-    MButton,
-    MRadioButton,
-    MRadioGroup,
-    MRadio,
     MSelect,
     MOption,
-    MCheckboxGroup,
-    MCheckbox,
     MDatePicker,
-    MSwitch
+    MTextarea,
+    MTimePicker
   },
   data () {
     return {
@@ -91,6 +51,7 @@ export default {
       list: [0],
       time: new Date(),
       open: false,
+      text: '',
       options: [{
         value: '选项1',
         label: '黄金糕'
