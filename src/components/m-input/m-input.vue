@@ -78,6 +78,7 @@ export default {
   border-radius: 4px;
   border: 1px solid #e4e7ed;
   padding: 0 10px;
+  background: #fff;
 }
 .input {
   outline: none;

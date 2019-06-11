@@ -16,12 +16,31 @@
       <m-date-picker v-model="time"></m-date-picker>
     </div>
     <div>
-      <div class="title">文本框</div>
+      <div class="title">高度自适应的文本框</div>
       <m-textarea v-model="text" placeholder="请输入"></m-textarea>
     </div>
     <div>
       <div class="title">时间选择</div>
       <m-time-picker></m-time-picker>
+    </div>
+    <div>
+      <div class="title">表单</div>
+      <m-input
+        placeholder="请选择日期"
+        v-model="input1">
+        <i slot="suffix" class="el-icon-date"></i>
+      </m-input>
+      <div class="title">带图标</div>
+      <m-input
+        placeholder="请输入内容"
+        v-model="input2">
+        <i slot="prefix" class="el-icon-search"></i>
+      </m-input>
+      <div class="title">不带图标</div>
+      <m-input
+        placeholder="请输入内容"
+        v-model="input3">
+      </m-input>
     </div>
   </div>
 </template>
@@ -31,6 +50,7 @@ import MSelect from '@/components/m-select/m-select'
 import MOption from '@/components/m-select/m-option'
 import MDatePicker from '@/components/m-date-picker/m-date-picker'
 import MTextarea from '@/components/m-textarea/m-textarea'
+import MInput from '@/components/m-input/m-input'
 import MTimePicker from '@/components/m-time-picker/m-time-picker'
 export default {
   components: {
@@ -38,7 +58,8 @@ export default {
     MOption,
     MDatePicker,
     MTextarea,
-    MTimePicker
+    MTimePicker,
+    MInput
   },
   data () {
     return {
@@ -52,6 +73,9 @@ export default {
       time: new Date(),
       open: false,
       text: '',
+      input1: '',
+      input2: '',
+      input3: '',
       options: [{
         value: '选项1',
         label: '黄金糕'
